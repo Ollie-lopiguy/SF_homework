@@ -3,7 +3,6 @@
 """
 
 import numpy as np
-import random
 
 def random_predict(number: int = 1) -> int:
     """Рандомно угадываем число
@@ -14,24 +13,21 @@ def random_predict(number: int = 1) -> int:
     Returns:
         int: Число попыток
     """
-    lower = 1
-    upper = 101    
-    number = np.random.randint(lower, upper)
     count = 0
     while count < 20:
         count += 1
-        number = (lower+upper)//2
+        predict_number = np.random.randint(1, 101)
 	    # Вводим предполагаемый ответ
-        guess = int(input("Загаданное число это: "))
+        predict_number = int(input("Загаданное число это: "))
 	    # Проверяется условие
-        if number > guess:
+        if number > predict_number:
             print('Это число больше')
-        elif number < guess:
+        elif number < predict_number:
             print('Это число меньше')
         else: 
             print("Поздравляю! Вы справились за ", count, " попыток")
             break
-
+    return count
     
 def score_game(random_predict) -> int:
     """За какое количество попыток в среднем за 1000 подходов угадывает наш алгоритм
